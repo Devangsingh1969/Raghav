@@ -1,0 +1,151 @@
+<%- include('./base/header.ejs') %>
+
+<style>
+    /* Container Styles */
+    .container {
+        margin-top: 50px;
+    }
+
+    /* Table Styling */
+    .table {
+        width: 100%;
+        margin: 20px 0;
+        font-size: 18px;
+        border-collapse: collapse;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    /* Table Header with Yellow & Black */
+    th {
+        background-color: #FFC107; /* Bright yellow */
+        color: black;
+        padding: 15px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-bottom: 3px solid black;
+        transition: background 0.4s ease, transform 0.3s ease;
+        animation: header-pop 1s ease-in-out infinite alternate; /* Animation */
+    }
+
+    /* Header hover effect */
+    th:hover {
+        background-color: #FFEB3B; /* Lighter yellow */
+        transform: scale(1.05);
+    }
+
+    /* Table Rows */
+    td {
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-bottom: 1px solid black;
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        border-right: 1px solid #ddd;
+    }
+
+    /* Alternating Row Colors */
+    tr:nth-child(even) td {
+        background-color: #FFE082; /* Light yellow */
+    }
+
+    tr:nth-child(odd) td {
+        background-color: #FFF9C4; /* Lighter yellow */
+    }
+
+    /* Row Hover */
+    tr:hover td {
+        background-color: black;
+        color: #FFC107; /* Yellow on hover */
+        transform: translateY(-3px); /* Hover animation */
+    }
+
+    /* Table Borders */
+    th, td {
+        text-align: center;
+        border-right: 1px solid black;
+    }
+
+    /* Last Column Border */
+    th:last-child, td:last-child {
+        border-right: none;
+    }
+
+    /* Animation for table header */
+    @keyframes header-pop {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        100% {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    /* Responsive Table */
+    @media (max-width: 768px) {
+        .table {
+            font-size: 14px;
+        }
+        th, td {
+            padding: 10px;
+        }
+    }
+
+    /* Adding shadows for more depth */
+    .table {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Round borders */
+    table {
+        border-radius: 12px;
+    }
+
+    /* Animation on table appearance */
+    .table {
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fade-in 0.8s forwards ease-out;
+    }
+
+    /* Fade-in animation */
+    @keyframes fade-in {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Father Name</th>
+                    <th>Aadhar Card No</th>
+                    <th>Mobile No</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% students.forEach((student) => { %>
+                    <tr> 
+                        <td><%= student.rollNo %></td>
+                        <td><%= student.firstName %></td>
+                        <td><%= student.lastName %></td>
+                        <td><%= student.fatherName %></td>
+                        <td><%= student.aadharCardNo %></td>
+                        <td><%= student.mobileNo %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('./base/footer.ejs') %>
