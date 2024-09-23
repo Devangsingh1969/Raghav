@@ -120,7 +120,7 @@
 
     /* Heading Styling (Updated) */
     .alert {
-        background-color: #FFC107; /* Bright yellow to match the table header */
+        background-color: #d1a728; /* Bright yellow to match the table header */
         color: black; /* Black text to match the theme */
         font-size: 28px;
         font-weight: bold;
@@ -145,6 +145,7 @@
                     <th>Father Name</th>
                     <th>Aadhar Card No</th>
                     <th>Mobile No</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -156,6 +157,7 @@
                         <td><%= student.fatherName %></td>
                         <td><%= student.aadharCardNo %></td>
                         <td><%= student.mobileNo %></td>
+                        <td><a href="/edit/student/page/<%= student._id%>" class= "btn btn-warning w-75">Edit</a></td>
                     </tr>
                 <% }) %>
             </tbody>
